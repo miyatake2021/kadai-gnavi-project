@@ -20,12 +20,11 @@
         <tbody>
           @foreach ($restaurants as $restaurant)
           <tr>
-            <!-- <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id" >{{ $restaurant["id"] }}</a></td> -->
             <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" >{{ $restaurant["name"] }}</a></td>
             @if($restaurant['image'] == "")
-            <td><img src="https://placehold.jp/80x80.png" alt=""></td>
+            <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="https://placehold.jp/80x80.png" alt=""></a></td>
             @else
-            <td><img src="{{ $restaurant['image'] }}" alt="" style="width:80px"></td>
+            <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="{{ $restaurant['image'] }}" alt="" style="width:80px"></a></td>
             @endif
             @if($restaurant["walk"] == "")
             <td></td>

@@ -22,8 +22,9 @@
             <div class="d-inline-block w-50 ml-5 align-top">
               <ul class="list-group list-group-flush">
               <li class="list-group-item">営業時間:{{ $restaurant["opentime"] }}</li>
+              <li class="list-group-item">休業日:{{ $restaurant["holiday"] }}</li>
               <li class="list-group-item">住所:{{ $restaurant["address"] }}</li>
-              <li class="list-group-item">tel:{{ $restaurant["tel"] }}</li>
+              <li class="list-group-item">電話番号:{{ $restaurant["tel"] }}</li>
               </ul>
             </div>
           </div>

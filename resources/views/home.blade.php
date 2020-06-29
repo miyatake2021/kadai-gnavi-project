@@ -16,7 +16,6 @@
           </div>
           <div class="col-4">
             <select class="custom-select" name="range">
-              <option selected>せんたく</option>
               <option value="1">300m</option>
               <option value="2">500m</option>
               <option value="3">1000m</option>

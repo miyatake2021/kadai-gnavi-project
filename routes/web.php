@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AppsController@index');
+
+// Route::post('result', 'AppsController@result');
+Route::match(['get', 'post'], 'result','AppsController@result'); 
+
+Route::get('detail/{id}', 'AppsController@detail');
+
+
+
+

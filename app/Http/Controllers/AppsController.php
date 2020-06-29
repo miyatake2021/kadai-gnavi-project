@@ -20,10 +20,10 @@ class AppsController extends Controller
         if($request->isMethod('POST')){
             $request->session()->put('search_params',$request->all());
             $range = $request->range;
-            // $lat = $request->lat;
-            // $lon = $request->lon;
-            $lat   = 35.670083;
-            $lon   = 139.763267;
+            $lat = $request->lat;
+            $lon = $request->lon;
+            // $lat   = 35.670083;
+            // $lon   = 139.763267;
             // dd($lat,$lon);
         }
         elseif($request->session()->has('search_params')){
@@ -48,7 +48,7 @@ class AppsController extends Controller
         $uri   = "https://api.gnavi.co.jp/RestSearchAPI/v3/";
 
         //APIアクセスキーを変数に入れる
-        $acckey= "f3e9d2953453a5b5f4c5f27d659cc78f";
+        $acckey= env('GNAVI_ACCESS_KEY');
 
         //返却値のフォーマットを変数に入れる
         $format= "json";
@@ -159,7 +159,7 @@ class AppsController extends Controller
         $uri   = "https://api.gnavi.co.jp/RestSearchAPI/v3/";
 
         //APIアクセスキーを変数に入れる
-        $acckey= "f3e9d2953453a5b5f4c5f27d659cc78f";
+        $acckey= env('GNAVI_ACCESS_KEY');
 
         //返却値のフォーマットを変数に入れる
         $format= "json";

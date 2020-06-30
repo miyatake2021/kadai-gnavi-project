@@ -2,3 +2,71 @@
   content: ">";
 }
 
+.container-sm .table tbody tr td img {
+  width: 80px;
+}
+
+.container-lg .contents {
+  display: inline-block;
+}
+
+.container-lg .contents img {
+  width: 100%;
+}
+
+.container-lg .intro {
+  display: inline-block;
+  width: 50%;
+  margin-left: 3rem;
+}
+
+@media (max-width: 896px) {
+  .container-sm .table {
+    width: 100%;
+  }
+
+  .container-sm .table thead {
+    display: none;
+  }
+
+  .container-sm .table tbody tr {
+    width: 100%;
+  }
+
+  .container-sm .table tbody tr td {
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+
+  .container-sm .table tbody tr td:first-child {
+    background: #b8d200;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .container-sm .table tbody tr td img {
+    width: 100%;
+  }
+
+  .container-sm .table tr td:before {
+    content: attr(data-label);
+    float: left;
+    margin-right: 10px;
+  }
+
+  .container-lg .contents {
+    display: block;
+  }
+
+  .container-lg .contents img {
+    width: 100%;
+  }
+
+  .container-lg .intro {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+

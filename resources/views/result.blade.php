@@ -7,7 +7,7 @@
       </ol>
     </nav>
         
-    <div class="container-sm mt-3">
+    <div class="container-sm mt-3 ml-0">
       @if(count($restaurants) > 0)
       <table class="table">
         <thead>
@@ -24,12 +24,12 @@
             @if($restaurant['image'] == "")
             <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="https://placehold.jp/80x80.png" alt=""></a></td>
             @else
-            <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="{{ $restaurant['image'] }}" alt="" style="width:80px"></a></td>
+            <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="{{ $restaurant['image'] }}" alt=""></a></td>
             @endif
             @if($restaurant["walk"] == "")
             <td></td>
             @else
-            <td>{{ $restaurant["line"] }}{{ $restaurant["station"] }}{{ $restaurant["station_exit"] }}{{ $restaurant["walk"] }}分</td>
+            <td data-label="アクセス">{{ $restaurant["line"] }}{{ $restaurant["station"] }}{{ $restaurant["station_exit"] }}{{ $restaurant["walk"] }}分</td>
             @endif
           </tr>
           @endforeach

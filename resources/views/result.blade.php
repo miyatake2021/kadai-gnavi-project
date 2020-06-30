@@ -7,7 +7,7 @@
       </ol>
     </nav>
         
-    <div class="container-sm mt-3 ml-0">
+    <div class="container-sm mt-3">
       @if(count($restaurants) > 0)
       <table class="table">
         <thead>

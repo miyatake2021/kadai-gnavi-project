@@ -25,6 +25,8 @@
             <li class="list-group-item">休業日:{{ $restaurant["holiday"] }}</li>
             <li class="list-group-item">住所:{{ $restaurant["address"] }}</li>
             <li class="list-group-item">電話番号:{{ $restaurant["tel"] }}</li>
+            <li class="list-group-item">ページURL:{{ $restaurant["url"] }}</li>
+            <!-- <li class="list-group-item"><a href="url({{ $restaurant["url"] }})"></a></li> -->
             </ul>
           </div>
         </div>

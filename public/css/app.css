@@ -1,3 +1,8 @@
+.dropdown {
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">";
 }
@@ -21,6 +26,10 @@
 }
 
 @media (max-width: 896px) {
+  .container-sm {
+    margin-left: 0;
+  }
+
   .container-sm .table {
     width: 100%;
   }

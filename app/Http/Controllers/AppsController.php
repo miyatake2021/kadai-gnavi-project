@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AppsController extends Controller
 {
     public function index () 
-    {
+    {   
         return view('home');
     }
 
@@ -20,17 +20,23 @@ class AppsController extends Controller
         if($request->isMethod('POST')){
             $request->session()->put('search_params',$request->all());
             $range = $request->range;
-            $lat = $request->lat;
-            $lon = $request->lon;
-            // $lat   = 35.670083;
-            // $lon   = 139.763267;
+            // $lat = $request->lat;
+            // $lon = $request->lon;
+            $lat   = 35.670083;
+            $lon   = 139.763267;
             // dd($lat,$lon);
+            $wifi = $request->wifi;
+            $outret = $request->outret;
+            $card = $request->card;
         }
         elseif($request->session()->has('search_params')){
             $search_params = $request->session()->get('search_params');
             $range = $search_params['range'];
             $lat = $search_params['lat'];
             $lon = $search_params['lon'];
+            $wifi = $search_params['wifi'];
+            $outret = $search_params['outret'];
+            $card = $search_params['card'];
         }
         else{
             return redirect('/');
@@ -50,7 +56,7 @@ class AppsController extends Controller
 
         //URL組み立て
         // $url  = sprintf("%s%s%s%s%s%s%s%s%s%s%s", $uri, "?format=", $format, "&keyid=", $acckey, "&latitude=", $lat,"&longitude=",$lon,"&range=",$range);
-        $url  = $uri ."?keyid=" .$acckey ."&range=" .$range ."&latitude=" .$lat ."&longitude=" .$lon;
+        $url  = $uri ."?keyid=" .$acckey ."&range=" .$range ."&latitude=" .$lat ."&longitude=" .$lon ."&wifi=" .$wifi ."&outret=" .$outret ."&card=" .$card;
         
 
         // curl
@@ -84,8 +90,9 @@ class AppsController extends Controller
                     $restaurant["station_exit"] = $restItem->access->station_exit;
                     $restaurant["walk"] = $restItem->access->walk;
                     $restaurant["holiday"] = $restItem->holiday;
-                    
+                    $restaurant["url"] = $restItem->url;
 
+                    
                     $restaurants[] = $restaurant;
                     // dd($restaurants);
                 }
@@ -140,7 +147,7 @@ class AppsController extends Controller
                     $restaurant["tel"] = $restItem->tel;
                     $restaurant["address"] = $restItem->address;
                     $restaurant["holiday"] = $restItem->holiday;
-                    
+                    $restaurant["url"] = $restItem->url;
 
                     $restaurants[] = $restaurant;
                     // dd($restaurants);

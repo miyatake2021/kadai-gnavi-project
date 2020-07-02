@@ -26,7 +26,39 @@
           <div class="col-4 mt-1">
             <p>圏内</p>
           </div>
+      <div class="dropdown">
+        <button type="button" id="dropdown1"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+          詳細設定
+        </button>
+        <!-- 詳細設定 -->
+        <div class="form-check dropdown-menu" aria-labelledby="dropdown1">
+          <div class="dropdown-item">
+          <input class="form-check-input" type="checkbox" value="1" id="wifi" name="wifi">
+          <label class="form-check-label" for="wifi">
+          wifi
+          </label>
+          </div>
+          <div class="dropdown-item">
+          <input class="form-check-input" type="checkbox" value="1" id="outret" name="outret">
+          <label class="form-check-label" for="outret">
+          電源
+          </label>
+          </div>
+          <div class="dropdown-item">
+          <input class="form-check-input" type="checkbox" value="1" id="card" name="card">
+          <label class="form-check-label" for="card">
+          カードの利用
+          </label>
+          </div>
+        </div>
       </div>
+
+      </div>
+    
       <div class="text-center mt-3">
         <button type="submit" class="btn btn-outline-dark center-block" id ="check_position" disabled>検索</button>
       </div>
@@ -39,7 +71,8 @@
     if (navigator.geolocation) {
       alert("位置情報を取得しますか？");
     // Geolocation APIに対応していない
-    } else {
+    } 
+    else {
       alert("位置情報が取得できません");
     }
 

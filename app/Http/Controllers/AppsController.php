@@ -17,6 +17,7 @@ class AppsController extends Controller
         $range = 2;
         $lat = 0;
         $lon = 0;
+
         if($request->isMethod('POST')){
             $request->session()->put('search_params',$request->all());
             $range = $request->range;
@@ -28,6 +29,7 @@ class AppsController extends Controller
             $wifi = $request->wifi;
             $outret = $request->outret;
             $card = $request->card;
+            // dd($wifi,$outret,$card);
         }
         elseif($request->session()->has('search_params')){
             $search_params = $request->session()->get('search_params');
@@ -91,6 +93,7 @@ class AppsController extends Controller
                     $restaurant["walk"] = $restItem->access->walk;
                     $restaurant["holiday"] = $restItem->holiday;
                     $restaurant["url"] = $restItem->url;
+                    $restaurant["budget"] = $restItem->budget;
 
                     
                     $restaurants[] = $restaurant;
@@ -148,6 +151,7 @@ class AppsController extends Controller
                     $restaurant["address"] = $restItem->address;
                     $restaurant["holiday"] = $restItem->holiday;
                     $restaurant["url"] = $restItem->url;
+                    $restaurant["budget"] = $restItem->budget;
 
                     $restaurants[] = $restaurant;
                     // dd($restaurants);

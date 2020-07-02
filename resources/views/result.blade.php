@@ -22,7 +22,7 @@
           <tr>
             <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" >{{ $restaurant["name"] }}</a></td>
             @if($restaurant['image'] == "")
-            <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="https://placehold.jp/80x80.png" alt=""></a></td>
+            <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="https://placehold.jp/80x80.png?text=no_image" alt=""></a></td>
             @else
             <td><a href="{{url('detail/' .$restaurant['id'])}}" class="id text-dark" ><img src="{{ $restaurant['image'] }}" alt=""></a></td>
             @endif

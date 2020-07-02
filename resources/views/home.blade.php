@@ -37,18 +37,21 @@
         <!-- 詳細設定 -->
         <div class="form-check dropdown-menu" aria-labelledby="dropdown1">
           <div class="dropdown-item">
+          <input class="form-check-input" type="hidden" value="0" id="wifi" name="wifi">
           <input class="form-check-input" type="checkbox" value="1" id="wifi" name="wifi">
           <label class="form-check-label" for="wifi">
           wifi
           </label>
           </div>
           <div class="dropdown-item">
+          <input class="form-check-input" type="hidden" value="0" id="outret" name="outret">
           <input class="form-check-input" type="checkbox" value="1" id="outret" name="outret">
           <label class="form-check-label" for="outret">
           電源
           </label>
           </div>
           <div class="dropdown-item">
+          <input class="form-check-input" type="hidden" value="0" id="card" name="card">
           <input class="form-check-input" type="checkbox" value="1" id="card" name="card">
           <label class="form-check-label" for="card">
           カードの利用

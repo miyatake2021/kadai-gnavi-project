@@ -20,10 +20,10 @@ class AppsController extends Controller
         if($request->isMethod('POST')){
             $request->session()->put('search_params',$request->all());
             $range = $request->range;
-            // $lat = $request->lat;
-            // $lon = $request->lon;
-            $lat   = 35.670083;
-            $lon   = 139.763267;
+            $lat = $request->lat;
+            $lon = $request->lon;
+            // $lat   = 35.670083;
+            // $lon   = 139.763267;
             // dd($lat,$lon);
             $wifi = $request->wifi;
             $outret = $request->outret;

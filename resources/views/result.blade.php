@@ -39,5 +39,71 @@
         <p>該当する店舗がありませんでした</p>
       @endif
     </div>
+    @if($max == 1)
+    <nav aria-label="Page navigation example" class="d-none">
+    </nav>
+    @else
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center mt-5">
+        @if($offset == $start)
+        <li class="page-item disabled">
+          <a class="page-link text-dark" href="" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        @else
+        <li class="page-item">
+          <a class="page-link text-dark" href="/result/?page=1" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        @endif
+
+        <!-- $max < 5の場合の処理 -->
+        @if($max < 5)
+          @for($i=$start;$i<=$max;$i++)
+          <li class="page-item @if($i == $offset) active @endif"><a class="page-link text-dark" href="/result/?page={{ $i }}">{{ $i }}</a></li>
+          @endfor
+        <!-- $max >= 5の場合の処理 -->
+        @else
+          <!-- $offsetが1,2の時の処理 -->
+          @if($offset < 3)
+            @for($i=$start;$i<=5;$i++)
+              <li class="page-item @if($i == $offset) active @endif "><a class="page-link text-dark" href="/result/?page={{ $i }}">{{ $i }}</a></li>
+            @endfor
+          <!-- $offsetが$max-2,$max-1の時の処理 -->
+          @elseif($offset > ($max-2))
+            @for($i=($max-4);$i<=$max;$i++)
+            <li class="page-item @if($i == $offset) active @endif"><a class="page-link text-dark" href="/result/?page={{ $i }}">{{ $i }}</a></li>
+            @endfor
+          <!-- 通常のループ -->
+          @else
+            @for($i=($offset-2);$i<=($offset+2);$i++)
+              <li class="page-item @if($i == $offset) active @endif"><a class="page-link text-dark" href="/result/?page={{ $i }}">{{ $i }}</a></li>
+            @endfor
+          @endif
+        @endif
+
+        @if($offset == $max)
+        <li class="page-item disabled">
+          <a class="page-link text-dark" href="" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        @else
+        <li class="page-item">
+          <a class="page-link text-dark" href="/result/?page={{ $max }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        @endif
+      </ul>
+    </nav>
+    @endif
 @endsection   
+
     

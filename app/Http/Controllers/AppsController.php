@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Pagination\Paginator;
 
 class AppsController extends Controller
 {
@@ -22,25 +21,23 @@ class AppsController extends Controller
         $offset = 1;
         $hit_per_page = 20;
         $page_max = 1000/$hit_per_page;
+        $total_hit_count = 0;
 
         if($request->isMethod('POST')){
             $request->session()->put('search_params',$request->all());
             $range = $request->range;
-            // $lat = $request->lat;
-            // $lon = $request->lon;
-            $lat   = 35.670083;
-            $lon   = 139.763267;
+            $lat = $request->lat;
+            $lon = $request->lon;
             $wifi = $request->wifi;
             $outret = $request->outret;
             $card = $request->card;
+            $offset =$request->offset;
         }
         elseif($request->session()->has('search_params')){
             $search_params = $request->session()->get('search_params');
             $range = $search_params['range'];
-            $lat   = 35.670083;
-            $lon   = 139.763267;
-            // $lat = $search_params['lat'];
-            // $lon = $search_params['lon'];
+            $lat = $search_params['lat'];
+            $lon = $search_params['lon'];
             $wifi = $search_params['wifi'];
             $outret = $search_params['outret'];
             $card = $search_params['card'];
@@ -52,7 +49,6 @@ class AppsController extends Controller
             return redirect('/');
         }
 
-        // dd($range);
         $uri   = "https://api.gnavi.co.jp/RestSearchAPI/v3/";
 
         //APIアクセスキーを変数に入れる
@@ -76,8 +72,6 @@ class AppsController extends Controller
         CURLOPT_TIMEOUT => 60,
         ]);
         $obj = @json_decode(curl_exec($ch), true);
-        // dd($obj);
-        $total_hit_count = $obj["total_hit_count"];
         
 
         $restaurants = [];
@@ -88,12 +82,9 @@ class AppsController extends Controller
             if ($key =="rest"){
                 foreach((array)$val as $restItem){
                     $restItem = json_decode(json_encode($restItem));
-                    // dd($restItem); 
                     $restaurant = [];
                     $restaurant["id"] = $restItem->id;
-                    // dd($restaurant);
                     $restaurant["name"] = $restItem->name;
-                    // dd($restaurant);
                     $restaurant["image"] = $restItem->image_url->shop_image1;
                     $restaurant["line"] = $restItem->access->line;
                     $restaurant["station"] = $restItem->access->station;
@@ -107,11 +98,12 @@ class AppsController extends Controller
                 }
             }
         }
-        
-        
-        // dd($request->session());
-
-
+        if($restaurants){
+            $total_hit_count = $obj["total_hit_count"];
+        }
+        else{
+            $total_hit_count = 0;
+        }
         $start = 1;
         $max =50;
         $total_page =ceil($total_hit_count/$hit_per_page);
@@ -121,15 +113,12 @@ class AppsController extends Controller
         else{
             $max =$page_max;
         }
-        // dd($max);
         return view('result', [
             "restaurants" => $restaurants,
             "offset"=>$offset,
             "max"=>$max,
             "start"=>$start,
         ]);
-        
-        
     }
 
     public function detail(Request $request) 
@@ -137,7 +126,6 @@ class AppsController extends Controller
         $id = $request->id;
         
         $uri   = "https://api.gnavi.co.jp/RestSearchAPI/v3/";
-
 
         $offset = $request->page;
         // dd($offset);
@@ -176,9 +164,9 @@ class AppsController extends Controller
                 }
             }
         }
-
         $search_params = $request->session()->get('search_params');
         $offset = $search_params['offset'];
+        
         return view('detail', [
             "restaurants" => $restaurants,
             "offset"=> $offset,

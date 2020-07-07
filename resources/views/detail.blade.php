@@ -30,7 +30,7 @@
             @endif
             <li class="list-group-item">住所:{{ $restaurant["address"] }}</li>
             <li class="list-group-item">電話番号:{{ $restaurant["tel"] }}</li>
-            <li class="list-group-item">ページURL:
+            <li class="list-group-item url">ページURL:
               <a href="{{url( $restaurant['url'])}}" target="_blank" rel="noopener noreferrer">{{ $restaurant["url"] }}</a>
             </li>
             </ul>

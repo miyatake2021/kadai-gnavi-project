@@ -10,6 +10,7 @@
       @csrf
       <input type="hidden" id="lat" name="lat">
       <input type="hidden" id="lon" name="lon">
+      <input type="hidden" id="offset" name="offset" value="1">
       <div class="form-row aligh-items-center mt-5" >
           <div class="col-4 mt-1">
             <p class="float-right">現在地から</p>

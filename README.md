@@ -20,7 +20,8 @@
 
 3)php artisan key:generateとコマンドを入力
 
-4)ぐるなびwebサービスに登録し、[https://ssl.gnavi.co.jp/api/regist/?p=input]発行されたアクセスキーを.envのGNAVI_ACCESS_KEY=　以下に書き入れる
+4)ぐるなびwebサービスに登録。[https://ssl.gnavi.co.jp/api/regist/?p=input]  
+発行されたアクセスキーを.envのGNAVI_ACCESS_KEY=　以下に書き入れる
 
 
 ## サーバーの起動
